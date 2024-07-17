@@ -12,6 +12,11 @@ function addItem(event) {
                 var newItem = document.createElement("li");
                 newItem.textContent = itemText;
 
+                newItem.addEventListener('click', function () {
+                    this.classList.toggle('checked');
+                    deleteItemFromStorage(itemText);
+                });
+
                 var itemList = document.getElementById("itemList");
                 itemList.appendChild(newItem);
 
@@ -40,6 +45,12 @@ function loadItemsFromStorage() {
     items.forEach(function (itemText) {
         var newItem = document.createElement("li");
         newItem.textContent = itemText;
+
+        newItem.addEventListener('click', function () {
+            this.classList.toggle('checked');
+            deleteItemFromStorage(itemText);
+        });
+
         itemList.appendChild(newItem);
     });
 }
@@ -47,6 +58,14 @@ function loadItemsFromStorage() {
 function isItemDuplicate(item) {
     var items = JSON.parse(localStorage.getItem("items")) || [];
     return items.includes(item);
+}
+
+function deleteItemFromStorage(item) {
+    var items = JSON.parse(localStorage.getItem("items")) || [];
+    var updatedItems = items.filter(function (storedItem) {
+        return storedItem !== item;
+    });
+    localStorage.setItem("items", JSON.stringify(updatedItems));
 }
 
 document.getElementById("itemInput").addEventListener("keydown", addItem);
