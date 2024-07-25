@@ -2,6 +2,12 @@ window.addEventListener('load', function () {
     loadItemsFromStorage();
 });
 
+document.getElementById("itemInput").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") addItem(event);
+});
+
+document.getElementById("addButton").addEventListener("click", addItem);
+
 function addItem(event) {
     if (event.key === "Enter" || event.type === "click") {
         var inputField = document.getElementById("itemInput");

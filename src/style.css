@@ -73,14 +73,6 @@ li {
     opacity: 0.5;
 }
 
-.reload-button {
-    padding: 8px 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
 #reset {
     padding: 7px;
     margin-right: 42px;
