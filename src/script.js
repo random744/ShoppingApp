@@ -72,7 +72,6 @@ document.getElementById("itemInput").addEventListener("keydown", addItem);
 
 document.querySelector("button").addEventListener("click", addItem);
 
-
-function restart() {
-    location.reload();   
+function reset() {
+    location.reload()
 }
